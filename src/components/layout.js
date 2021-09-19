@@ -5,11 +5,13 @@ import Footer from "./footer"
 
 const Layout = ({ children }) => {
     return (
-        <div className="layout">
+        <React.Fragment>
             <Header />
-            <main>{children}</main>
+            <div className="layout">
+                <main>{children}</main>
             <Footer />
         </div>
+        </React.Fragment>
     )
 }
 

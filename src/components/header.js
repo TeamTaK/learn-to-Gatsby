@@ -22,6 +22,11 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
+    header: {
+        "@media (max-width: 900px)": {
+        padding: 0,
+        },
+    },
     menuButton: {
         marginRight: theme.spacing(2),
     },
@@ -54,6 +59,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
     const classes = useStyles();
 
+    //モバイルビュー使用可否を管理するステートを追加
+    const [mobileView, setMobileView] = React.useState(false);
+
     // メニュー開閉ステートを設定
     const [drawerOpen, setDrawerOpen] = React.useState(false);
     
@@ -62,54 +70,86 @@ export default function Header() {
         setDrawerOpen(!drawerOpen); // Drawerの開閉状態を反転
     };
 
+    // 画面サイズが変更されたとき、ステートの更新
+    React.useEffect(() => {
+        const setResponsiveness = () => {
+            return window.innerWidth < 900
+                ? setMobileView(true)
+                : setMobileView(false);
+        };
+        setResponsiveness();
+        window.addEventListener("resize", () => setResponsiveness());
+    }, []);
+
+    //デスクトップモード
+    const displayDesktop = () => {
+        return(
+            <Toolbar>
+                <Typography variant="h6" className={classes.title}>
+                        <Link to="/" className={classes.link}>DEVELOPING BLOG</Link> 
+                </Typography>
+                <Link to="/about" className={classes.nav_link}>
+                    <InfoIcon className={classes.nav_icon}/>
+                    ABOUT
+                </Link>
+            </Toolbar>
+        );
+    };
+
+    //モバイルモード
+    const displayMobile = () => {
+        return(
+            <Toolbar>
+                <IconButton 
+                    edge="start" 
+                    className={classes.menuButton} 
+                    color="inherit" 
+                    aria-label="menu"
+                    onClick={handleDrawerToggle}
+                >
+                    <MenuIcon />
+                </IconButton>
+                    
+                <Typography variant="h6" className={classes.title}>
+                    <Link to="/" className={classes.link}>DEVELOPING BLOG</Link> 
+                </Typography>
+                <Drawer 
+                    variant="temporary"
+                    open={drawerOpen}
+                    onClose={handleDrawerToggle}
+                    classes={{
+                        paper: classes.drawer,
+                    }}
+                >
+                    <List>
+                        <ListItem>
+                            <Link to="/" className={classes.nav_link}>
+                                <ListItemIcon>
+                                    <HomeIcon className={classes.nav_icon} />
+                                </ListItemIcon>
+                                <ListItemText primary="Home"/>
+                            </Link>
+                        </ListItem>
+                        <ListItem>
+                            <Link to="/about" className={classes.nav_link}>
+                                <ListItemIcon>
+                                    <InfoIcon className={classes.nav_icon}/>
+                                </ListItemIcon>
+                                <ListItemText primary="About"/>
+                            </Link>
+                        </ListItem>
+                    </List>
+                </Drawer>
+            </Toolbar>
+        );
+    };
+
 
     return (
         <div className={classes.root}>
             <AppBar position="static">
-                <Toolbar>
-                    <IconButton 
-                        edge="start" 
-                        className={classes.menuButton} 
-                        color="inherit" 
-                        aria-label="menu"
-                        onClick={handleDrawerToggle}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    
-                    <Typography variant="h6" className={classes.title}>
-                        <Link to="/" className={classes.link}>DEVELOPING BLOG</Link> 
-                    </Typography>
-                    <Button color="inherit">Login</Button>
-                </Toolbar>
+                {mobileView ? displayMobile() : displayDesktop()}
             </AppBar>
-            <Drawer 
-                variant="temporary"
-                open={drawerOpen}
-                onClose={handleDrawerToggle}
-                classes={{
-                    paper: classes.drawer,
-                }}
-            >
-                <List>
-                    <ListItem>
-                        <Link to="/" className={classes.nav_link}>
-                            <ListItemIcon>
-                                <HomeIcon className={classes.nav_icon} />
-                            </ListItemIcon>
-                            <ListItemText primary="Home"/>
-                        </Link>
-                    </ListItem>
-                    <ListItem>
-                        <Link to="/about" className={classes.nav_link}>
-                            <ListItemIcon>
-                                <InfoIcon className={classes.nav_icon}/>
-                            </ListItemIcon>
-                            <ListItemText primary="About"/>
-                        </Link>
-                    </ListItem>
-                </List>
-            </Drawer>
         </div>
     );
 }
