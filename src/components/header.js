@@ -38,6 +38,10 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
 
     },
+    nav_icon: {
+        marginTop: '3px',
+        marginBbottom: '3px',
+    },
     drawer: {
         [theme.breakpoints.up('sm')]: {
             width: drawerWidth,
@@ -91,15 +95,15 @@ export default function Header() {
                     <ListItem>
                         <Link to="/" className={classes.nav_link}>
                             <ListItemIcon>
-                                <HomeIcon />
+                                <HomeIcon className={classes.nav_icon} />
                             </ListItemIcon>
-                            <ListItemText primary="Home" />
+                            <ListItemText primary="Home"/>
                         </Link>
                     </ListItem>
                     <ListItem>
                         <Link to="/about" className={classes.nav_link}>
                             <ListItemIcon>
-                                <InfoIcon />
+                                <InfoIcon className={classes.nav_icon}/>
                             </ListItemIcon>
                             <ListItemText primary="About"/>
                         </Link>
