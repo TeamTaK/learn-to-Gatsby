@@ -2,8 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 import "../styles/post-link.css"
 
-const RANDOM_IMG = "https://source.unsplash.com/collection/175083/640x360";
-
 export default function PostLink({ post }) {
     const { title, updatedAt, image } = post;
     const description = post.description.description;

@@ -1,62 +1,111 @@
 import React from "react"
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import HomeIcon from '@material-ui/icons/Home';
+import InfoIcon from '@material-ui/icons/Info';
+
 import { Link } from "gatsby"
-import LOGO_IMG from "../../static/logo.png"
-import "../styles/header.css"
 
-const Header = (props) =>{
-    // ナビゲーションバーに表示するリンク
-    const NavMenuItem = ["Home","About","Skills","Link"];
+const drawerWidth = 240;
 
-    // 普段のリンクはこのスタイル
-    const LinkStyles = {
-        background: 'rebeccapurple',
-        color: 'white',
-        fontWeight: 'normal'
-    }
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        flexGrow: 1,
+    },
+    link: {
+        color: 'inherit',
+        textDecoration: 'none',
+    },
+    nav_link: {
+        color: 'inherit',
+        textDecoration: 'none',
+        display: 'flex',
 
-    // アクティブになったリンクは色を反転させる
-    const ActiveStyles = {
-        background: 'white',
-        color: 'rebeccapurple',
-        fontWeight: 'bold',
-    }
+    },
+    drawer: {
+        [theme.breakpoints.up('sm')]: {
+            width: drawerWidth,
+            flexShrink: 0,
+        },
+    },
+}));
 
-    // ナビゲーションリンクの作成
-    const NavMenuLiTag = NavMenuItem.map((item) => {
-        let page_link = "";
-        if(item === "Home") {
-            page_link = "/";
-        }
-        else page_link = "/" + item.toLowerCase() + "/";
 
-        return(
-            <li key={page_link}>
-                <Link to={page_link} style={LinkStyles}
-                    activeStyle={ActiveStyles}
-                    className="page-link"
-                >
-                    {item}
-                </Link>
-            </li>
-        )
-    });
+export default function Header() {
+    const classes = useStyles();
+
+    // メニュー開閉ステートを設定
+    const [drawerOpen, setDrawerOpen] = React.useState(false);
+    
+    //Drawerの開閉
+    const handleDrawerToggle = () => {
+        setDrawerOpen(!drawerOpen); // Drawerの開閉状態を反転
+    };
+
 
     return (
-        <header className="App-header">
-            <nav className="App-navbar">
-                <p className="App-logo">
-                    <Link to="/">
-                        <img src={LOGO_IMG} className="logo-image" alt="logo"></img>
-                    </Link>
-                </p>
-                <div className="App-navber-item">
-                    <ul>
-                        {NavMenuLiTag}
-                    </ul>
-                </div>
-            </nav>
-        </header>
+        <div className={classes.root}>
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton 
+                        edge="start" 
+                        className={classes.menuButton} 
+                        color="inherit" 
+                        aria-label="menu"
+                        onClick={handleDrawerToggle}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    
+                    <Typography variant="h6" className={classes.title}>
+                        <Link to="/" className={classes.link}>DEVELOPING BLOG</Link> 
+                    </Typography>
+                    <Button color="inherit">Login</Button>
+                </Toolbar>
+            </AppBar>
+            <Drawer 
+                variant="temporary"
+                open={drawerOpen}
+                onClose={handleDrawerToggle}
+                classes={{
+                    paper: classes.drawer,
+                }}
+            >
+                <List>
+                    <ListItem>
+                        <Link to="/" className={classes.nav_link}>
+                            <ListItemIcon>
+                                <HomeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Home" />
+                        </Link>
+                    </ListItem>
+                    <ListItem>
+                        <Link to="/about" className={classes.nav_link}>
+                            <ListItemIcon>
+                                <InfoIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="About"/>
+                        </Link>
+                    </ListItem>
+                </List>
+            </Drawer>
+        </div>
     );
 }
-
-export default Header
