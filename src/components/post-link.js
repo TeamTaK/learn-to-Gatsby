@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Typography from "@material-ui/core/Typography";
 import "../styles/post-link.css"
 
 export default function PostLink({ post }) {
@@ -14,9 +15,9 @@ export default function PostLink({ post }) {
                 <img src={image.file.url} className="post-link-image" alt="post-cover"></img>
                 </div>
                 <div className="post-link-text">
-                    <h2>{title}</h2>
-                    <p className="post-link-body">{description}</p>
-                    <p className="post-link-date">{updatedAt}</p>
+                    <Typography variant="h5">{title}</Typography>
+                    <p className='post-link-anchor'>{description}</p>
+                    <p>{updatedAt}</p>
                 </div>
             </div>
         </Link>

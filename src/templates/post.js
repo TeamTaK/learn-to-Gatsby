@@ -1,4 +1,5 @@
 import React from "react"
+import Typography from "@material-ui/core/Typography";
 import "../styles/post.css"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -12,8 +13,8 @@ export default function Post({ pageContext }) {
         <Layout>
             <SEO title={title} description={description} />
             <div className="post-header">
-                <h1>{title}</h1>
-                <p className="post-date">{updatedAt}</p>
+                <Typography variant="h3">{title}</Typography>
+                <p>{updatedAt}</p>
             </div>
             <img src={image.file.url} className="post-image" alt="post-cover"></img>
             <div dangerouslySetInnerHTML={{ __html: body }} className="post-body" />

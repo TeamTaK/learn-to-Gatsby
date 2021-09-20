@@ -12,6 +12,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
+import Brightness5Icon from "@material-ui/icons/Brightness5"
+import Brightness4Icon from "@material-ui/icons/Brightness4";
 
 import { Link } from "gatsby"
 
@@ -55,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Header() {
+export default function Header(props) {
     const classes = useStyles();
 
     //モバイルビュー使用可否を管理するステートを追加
@@ -63,7 +65,7 @@ export default function Header() {
 
     // メニュー開閉ステートを設定
     const [drawerOpen, setDrawerOpen] = React.useState(false);
-    
+
     //Drawerの開閉
     const handleDrawerToggle = () => {
         setDrawerOpen(!drawerOpen); // Drawerの開閉状態を反転
@@ -91,6 +93,15 @@ export default function Header() {
                     <InfoIcon className={classes.nav_icon}/>
                     ABOUT
                 </Link>
+                {props.darkMode ? (
+                    <IconButton color="inherit" onClick={props.handleDarkModeOff}>
+                        <Brightness5Icon />
+                    </IconButton>
+                ) : (
+                    <IconButton color="inherit" onClick={props.handleDarkModeOn}>
+                        <Brightness4Icon />
+                    </IconButton>
+                )}
             </Toolbar>
         );
     };
@@ -112,6 +123,15 @@ export default function Header() {
                 <Typography variant="h6" className={classes.title}>
                     <Link to="/" className={classes.link}>DEVELOPING BLOG</Link> 
                 </Typography>
+                {props.darkMode ? (
+                    <IconButton color="inherit" onClick={props.handleDarkModeOff}>
+                        <Brightness5Icon />
+                    </IconButton>
+                ) : (
+                    <IconButton color="inherit" onClick={props.handleDarkModeOn}>
+                        <Brightness4Icon />
+                    </IconButton>
+                )}
                 <Drawer 
                     variant="temporary"
                     open={drawerOpen}
