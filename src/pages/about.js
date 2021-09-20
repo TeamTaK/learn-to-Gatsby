@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
     const classes = useStyles();
 
+
     return(
         <Layout>
             <SEO title="About" description="このサイトについて" />
