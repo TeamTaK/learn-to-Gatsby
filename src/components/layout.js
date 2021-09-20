@@ -42,7 +42,7 @@ const Layout = ({ children }) => {
 
     return (
         <React.Fragment>
-            {isLoading ? (<LinearProgress />) : (<Contents />)}
+            {isLoading ? (<LinearProgress className={classes.loading}/>) : (<Contents />)}
         </React.Fragment>
     )
 }
