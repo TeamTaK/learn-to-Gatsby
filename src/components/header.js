@@ -31,8 +31,12 @@ const useStyles = makeStyles((theme) => ({
     menuButton: {
         marginRight: theme.spacing(2),
     },
-    title: {
+    title_desktop: {
         flexGrow: 1,
+    },
+    title_mobile: {
+        flexGrow: 1,
+        textAlign: 'center',
     },
     link: {
         color: 'inherit',
@@ -86,7 +90,7 @@ export default function Header(props) {
     const displayDesktop = () => {
         return(
             <Toolbar>
-                <Typography variant="h6" className={classes.title}>
+                <Typography variant="h6" className={classes.title_desktop}>
                         <Link to="/" className={classes.link}>Dev tak Diary</Link> 
                 </Typography>
                 <Link to="/about" className={classes.nav_link}>
@@ -120,7 +124,7 @@ export default function Header(props) {
                     <MenuIcon />
                 </IconButton>
                     
-                <Typography variant="h6" className={classes.title}>
+                <Typography variant="h6" className={classes.title_mobile}>
                     <Link to="/" className={classes.link}>Dev tak Diary</Link> 
                 </Typography>
                 {props.darkMode ? (
