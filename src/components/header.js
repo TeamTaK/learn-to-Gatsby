@@ -87,7 +87,7 @@ export default function Header(props) {
         return(
             <Toolbar>
                 <Typography variant="h6" className={classes.title}>
-                        <Link to="/" className={classes.link}>DEVELOPING BLOG</Link> 
+                        <Link to="/" className={classes.link}>Dev tak Diary</Link> 
                 </Typography>
                 <Link to="/about" className={classes.nav_link}>
                     <InfoIcon className={classes.nav_icon}/>
@@ -121,7 +121,7 @@ export default function Header(props) {
                 </IconButton>
                     
                 <Typography variant="h6" className={classes.title}>
-                    <Link to="/" className={classes.link}>DEVELOPING BLOG</Link> 
+                    <Link to="/" className={classes.link}>Dev tak Diary</Link> 
                 </Typography>
                 {props.darkMode ? (
                     <IconButton color="inherit" onClick={props.handleDarkModeOff}>

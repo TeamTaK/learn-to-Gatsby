@@ -7,14 +7,13 @@ export default function Hero() {
     return (
         <div className="hero">
             <Typography variant="h3" className="hero-text">
-                Welcome to my blog!<br />
-                Enjoy lots of posts.<br />
+                Welcom to 'Dev tak Diary'<br />
             </Typography>
             <div className="hero-author">
                 <img src={ICON_IMG} className="hero-author-image" alt="avatar"></img>
                 <Typography variant="body2" className="hero-author-text">
-                    Written by XXXX.<br />
-                    Front Engineer at Hoge.Inc. Love JavaScript.
+                    Written by tak.<br />
+                    普段はERPのエンジニアとして働いています。
                 </Typography>
             </div>
         </div>
