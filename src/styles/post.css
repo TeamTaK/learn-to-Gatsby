@@ -25,3 +25,17 @@
   width: 100%;
   height: auto;
 }
+
+.post-body a {
+  color: inherit;
+}
+
+.post-body a:hover {
+  color: rgb(35, 245, 115);
+  background-color: rgba(235, 232, 232, 0.993);
+  font-weight: bolder;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
