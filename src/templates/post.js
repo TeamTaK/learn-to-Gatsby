@@ -3,10 +3,18 @@ import Typography from "@material-ui/core/Typography";
 import "../styles/post.css"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    postTitle: {
+        fontSize: 'clamp(2rem, 5vw, 3rem)',
+    },
+}));
 
 
 export default function Post({ pageContext }) {
 
+    const classes = useStyles();
 
     const { title, updatedAt, image } = pageContext.post;
     const description = pageContext.post.description.description;
@@ -16,7 +24,7 @@ export default function Post({ pageContext }) {
         <Layout>
             <SEO title={title} description={description} />
             <div className="post-header">
-                <Typography className="post-title">{title}</Typography>
+                <Typography className={classes.postTitle}>{title}</Typography>
                 <p>{updatedAt}</p>
             </div>
             <img src={image.file.url} className="post-image" alt="post-cover"></img>
