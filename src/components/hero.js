@@ -6,7 +6,7 @@ import ICON_IMG from "../../static/hero_icon.jpg"
 export default function Hero() {
     return (
         <div className="hero">
-            <Typography variant="h3" className="hero-text">
+            <Typography className="hero-text">
                 Welcom to 'Dev tak Diary'<br />
             </Typography>
             <div className="hero-author">
