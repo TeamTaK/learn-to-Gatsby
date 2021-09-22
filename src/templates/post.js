@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     postTitle: {
-        fontSize: 'clamp(2rem, 5vw, 3rem)',
+        fontSize: 'calc(12px + 2vw)',
     },
 }));
 

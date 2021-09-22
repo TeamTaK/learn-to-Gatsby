@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     heroTitle: {
-        fontSize: 'calc(24px + 1.5vw)',
+        fontSize: 'calc(12px + 3vw)',
         lineHeight: '1.2',
     },
     heroAuthorText: {
