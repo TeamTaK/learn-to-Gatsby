@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     postTitle: {
-        fontSize: 'calc(15px + 2.5vw)',
+        fontSize: 'calc(17px + 1.9vw)',
     },
 }));
 
