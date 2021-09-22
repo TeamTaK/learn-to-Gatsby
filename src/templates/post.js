@@ -16,7 +16,7 @@ export default function Post({ pageContext }) {
         <Layout>
             <SEO title={title} description={description} />
             <div className="post-header">
-                <Typography variant="h3">{title}</Typography>
+                <Typography className="post-title">{title}</Typography>
                 <p>{updatedAt}</p>
             </div>
             <img src={image.file.url} className="post-image" alt="post-cover"></img>

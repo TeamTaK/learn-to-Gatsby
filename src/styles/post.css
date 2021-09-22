@@ -3,6 +3,11 @@
   max-width: 700px;
 }
 
+.post-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+}
+
 .post-date {
   color: #434343;
 }
