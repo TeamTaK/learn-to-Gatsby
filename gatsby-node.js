@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const result = await graphql(
         `
         {
-          allContentfulPost {
+          allcontents: allContentfulPost {
             edges {
               node {
                 title
@@ -28,8 +28,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                 }
                 slug
                 category{
+                  id
                   name
                 }
+              }
+            }
+          }
+          categorys: allContentfulCategory {
+            edges {
+              node {
+                id
+                name
               }
             }
           }
@@ -42,7 +51,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         return
     }
 
-    const { edges } = result.data.allContentfulPost
+    // 全記事一覧
+    const { edges } = result.data.allcontents
+
+    // カテゴリ一覧
+    const { categoryEdges } = result.data.categorys
 
     edges.forEach(edge => {
         createPage({
