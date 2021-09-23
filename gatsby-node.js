@@ -4,6 +4,7 @@ const path = require("path")
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage } = actions
 
+    //すべての記事の取得
     const result = await graphql(
         `
         {
@@ -26,6 +27,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                   description
                 }
                 slug
+                category{
+                  name
+                }
               }
             }
           }
@@ -47,4 +51,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             context: { post: edge.node }
         })
     });
+
+    
 }
