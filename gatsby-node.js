@@ -39,6 +39,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               node {
                 id
                 name
+                slug
               }
             }
           }
@@ -54,15 +55,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // 全記事一覧
     const { edges } = result.data.allcontents
 
-    // カテゴリ一覧
-    const { categoryEdges } = result.data.categorys
-
     edges.forEach(edge => {
         createPage({
             path: `/post/${edge.node.slug}/`,
             component: path.resolve("./src/templates/post.js"),
             context: { post: edge.node }
         })
+    });
+
+
+    result.data.categorys.edges.forEach(edge => {
+      createPage({
+        path: `/categories/${edge.node.slug}`,
+        component: path.resolve("./src/templates/category.js"),
+        context: {
+          id: edge.node.id,
+          name: edge.node.name,
+          slug: edge.node.slug,
+        }
+      })
     });
 
     

@@ -1,4 +1,5 @@
 import React from "react"
+import CategoryList from "./category-list";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -93,10 +94,15 @@ export default function Header(props) {
                 <Typography variant="h6" className={classes.title_desktop}>
                         <Link to="/" className={classes.link}>Dev tak Diary</Link> 
                 </Typography>
-                <Link to="/about" className={classes.nav_link}>
-                    <InfoIcon className={classes.nav_icon}/>
-                    ABOUT
-                </Link>
+                <IconButton 
+                    edge="start" 
+                    className={classes.menuButton} 
+                    color="inherit" 
+                    aria-label="menu"
+                    onClick={handleDrawerToggle}
+                >
+                    <MenuIcon />
+                </IconButton>
                 {props.darkMode ? (
                     <IconButton color="inherit" onClick={props.handleDarkModeOff}>
                         <Brightness5Icon />
@@ -106,6 +112,35 @@ export default function Header(props) {
                         <Brightness4Icon />
                     </IconButton>
                 )}
+                <Drawer 
+                    anchor='right'
+                    variant="temporary"
+                    open={drawerOpen}
+                    onClose={handleDrawerToggle}
+                    classes={{
+                        paper: classes.drawer,
+                    }}
+                >
+                    <List>
+                        <ListItem>
+                            <Link to="/" className={classes.nav_link}>
+                                <ListItemIcon>
+                                    <HomeIcon className={classes.nav_icon} />
+                                </ListItemIcon>
+                                <ListItemText primary="Home"/>
+                            </Link>
+                        </ListItem>
+                        <ListItem>
+                            <Link to="/about" className={classes.nav_link}>
+                                <ListItemIcon>
+                                    <InfoIcon className={classes.nav_icon}/>
+                                </ListItemIcon>
+                                <ListItemText primary="About"/>
+                            </Link>
+                        </ListItem>
+                        <CategoryList />
+                    </List>
+                </Drawer>
             </Toolbar>
         );
     };
@@ -161,6 +196,7 @@ export default function Header(props) {
                                 <ListItemText primary="About"/>
                             </Link>
                         </ListItem>
+                        <CategoryList />
                     </List>
                 </Drawer>
             </Toolbar>
