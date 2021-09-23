@@ -26,11 +26,24 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        commonmark: true,
-        footnotes: true,
-        pedantic: true,
-        gfm: true,
-        plugins: [],
+        plugins: [
+          {
+            resolve: 'gatsby-remark-prismjs-title',
+            options: {
+              className: 'gatsby-code-title',
+            }
+          },
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
+            }
+          },
+        ],
       },
     },
     'gatsby-plugin-material-ui',
