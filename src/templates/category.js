@@ -37,7 +37,7 @@ export default function Category({ data, pageContext }) {
 
 export const query = graphql`
 query CategoryPost($id: String!) {
-  allContentfulCategory(filter: {id: {eq: $id}}) {
+  allContentfulCategory(filter: {id: {eq: $id}}, sort: {fields:updatedAt, order: DESC}) {
     edges {
       node {
         id
