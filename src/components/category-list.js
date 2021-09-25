@@ -11,8 +11,8 @@ const useStyles = makeStyles((theme) => ({
     nav_link: {
         color: 'inherit',
         textDecoration: 'none',
+        alignItems: 'center',
         display: 'flex',
-
     },
     nav_icon: {
         marginTop: '3px',

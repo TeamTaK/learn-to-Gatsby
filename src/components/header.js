@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     nav_link: {
         color: 'inherit',
         textDecoration: 'none',
+        alignItems: 'center',
         display: 'flex',
 
     },
@@ -125,7 +126,7 @@ export default function Header(props) {
                         <ListItem>
                             <Link to="/" className={classes.nav_link}>
                                 <ListItemIcon>
-                                    <HomeIcon className={classes.nav_icon} />
+                                    <HomeIcon  />
                                 </ListItemIcon>
                                 <ListItemText primary="Home"/>
                             </Link>
@@ -133,7 +134,7 @@ export default function Header(props) {
                         <ListItem>
                             <Link to="/about" className={classes.nav_link}>
                                 <ListItemIcon>
-                                    <InfoIcon className={classes.nav_icon}/>
+                                    <InfoIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="About"/>
                             </Link>
@@ -183,7 +184,7 @@ export default function Header(props) {
                         <ListItem>
                             <Link to="/" className={classes.nav_link}>
                                 <ListItemIcon>
-                                    <HomeIcon className={classes.nav_icon} />
+                                    <HomeIcon className={classes.nav_icon}/>
                                 </ListItemIcon>
                                 <ListItemText primary="Home"/>
                             </Link>
