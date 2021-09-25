@@ -52,10 +52,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         return
     }
 
-    // 全記事一覧
-    const { edges } = result.data.allcontents
-
-    edges.forEach(edge => {
+    // 全記事のページ作成
+    result.data.allcontents.edges.forEach(edge => {
         createPage({
             path: `/post/${edge.node.slug}/`,
             component: path.resolve("./src/templates/post.js"),
@@ -63,7 +61,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         })
     });
 
-
+    // カテゴリごとのページ作成
     result.data.categorys.edges.forEach(edge => {
       createPage({
         path: `/categories/${edge.node.slug}`,
@@ -75,6 +73,4 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       })
     });
-
-    
 }
