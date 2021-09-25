@@ -55,6 +55,10 @@ query CategoryPost($id: String!) {
             description
           }
           slug
+          category{
+            id
+            name
+          }
         }
       }
     }

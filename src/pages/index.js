@@ -35,6 +35,10 @@ export const query = graphql`
             }
             slug
             updatedAt(locale: "ja-JP", formatString: "YYYY年MM月DD日")
+            category{
+              id
+              name
+            }
           }
         }
       }
