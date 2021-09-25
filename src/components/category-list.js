@@ -26,7 +26,7 @@ export default function CategoryList() {
     const category = useStaticQuery(
         graphql`
         query CategoryQuery {
-            allContentfulCategory {
+            allContentfulCategory(sort: {fields: name, order: ASC}) {
               edges {
                 node {
                   name
