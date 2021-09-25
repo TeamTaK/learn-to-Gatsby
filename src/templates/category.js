@@ -1,11 +1,11 @@
 import React from "react"
 import Layout from "../components/layout"
 import PostLink from "../components/post-link"
-import { graphql } from "gatsby"
 import SEO from "../components/seo"
-import "../styles/category.css"
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
+import { graphql } from "gatsby"
+import "../styles/category.css"
 
 
 const useStyles = makeStyles((theme) => ({
