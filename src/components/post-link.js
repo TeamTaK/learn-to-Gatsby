@@ -1,19 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
-import { makeStyles } from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import CategoryIcon from '@material-ui/icons/Category';
 import "../styles/post-link.css"
 
-const useStyles = makeStyles((theme) => ({
-    categoryBox: {
-        display: 'flex',
-        alignItems: 'center',
-    }
-}));
-
 export default function PostLink({ post }) {
-    const classes = useStyles();
 
     const { title, updatedAt, image } = post;
     const description = post.description.description;
@@ -28,12 +19,14 @@ export default function PostLink({ post }) {
                 </div>
                 <div className="post-link-text">
                     <Typography variant="h5">{title}</Typography>
-                    <p className='post-link-anchor'>{description}</p>
-                    <p className={classes.categoryBox}>
-                        <CategoryIcon/>
-                        {category}
-                    </p>
-                    <p>{updatedAt}</p>
+                    <p className='anchor-date'>{description}</p>
+                    <div className="info-flame">
+                        <span className="anchor-date">{updatedAt}</span>
+                        <span className="anchor-category">
+                            <CategoryIcon/>
+                            {category}
+                        </span>
+                    </div>
                 </div>
             </div>
         </Link>

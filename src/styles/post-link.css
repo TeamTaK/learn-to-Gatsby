@@ -44,6 +44,18 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
   }
+  .info-flame {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+  }
+  .anchor-date,
+  .anchor-category {
+    color: inherit;
+    display: flex;
+    align-items: center;
+  }
 }
 
 @media screen and (min-width: 576px) {
@@ -55,5 +67,18 @@
     box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 60px -10px,
       rgba(0, 0, 0, 0.33) 0px 18px 36px -18px;
     border-radius: 10px;
+  }
+  .info-flame {
+    display: flex;
+    justify-content: left;
+    text-align: center;
+    align-items: center;
+  }
+  .anchor-date,
+  .anchor-category {
+    color: inherit;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
   }
 }
